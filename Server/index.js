@@ -31,8 +31,8 @@ app.post("/create-checkout-session", async (req, res) => {
       payment_method_types: ["card"],
       line_items,
       mode: "payment",
-      success_url: "http://localhost:5174/success", // Your success URL
-      cancel_url: "http://localhost:5174/cancel", // Your cancel URL
+      success_url: "http://stripepayement.vercel.app/success", // Your success URL
+      cancel_url: "http://stripepayement.vercel.app/cancel", // Your cancel URL
     });
 
     res.json({ id: session.id });
