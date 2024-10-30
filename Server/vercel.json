@@ -1,5 +1,9 @@
 {
   "version": 2,
   "builds": [{ "src": "./index.js", "use": "@vercel/node" }],
-  "routes": [{ "src": "/(.*)", "dest": "/" }]
+  "routes": [
+    { "src": "/success", "dest": "/success" },
+    { "src": "/cancel", "dest": "/cancel" },
+    { "src": "/(.*)", "dest": "/" }
+  ]
 }
