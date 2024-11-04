@@ -1,7 +1,6 @@
 import React from "react";
 import { loadStripe } from "@stripe/stripe-js";
 
-// Initialize Stripe outside the component to prevent it from reloading on each render
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
 function Cart({ cart, setCart }) {
@@ -25,7 +24,7 @@ function Cart({ cart, setCart }) {
       }
 
       const session = await response.json();
-      const stripe = await stripePromise; // Get the Stripe instance
+      const stripe = await stripePromise;
 
       // Redirect to checkout
       const { error } = await stripe.redirectToCheckout({
@@ -46,9 +45,6 @@ function Cart({ cart, setCart }) {
 
   return (
     <div className="max-w-lg  bg-white shadow-lg rounded-lg overflow-hidden p-4 top-0 absolute mt-16 mx-5 md:right-5">
-      {/* <h2 className="text-xl md:text-2xl font-semibold text-gray-800 mb-4">
-        Shopping Cart
-      </h2> */}
       {cartIsEmpty ? (
         <p className="text-gray-600">Your cart is empty.</p>
       ) : (

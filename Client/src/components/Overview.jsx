@@ -13,7 +13,7 @@ function Overview({ addToCart }) {
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodimollitia earum sunt ad hic molestias saepe laudantium, eos temporesit vel nobis similique dolorum impedit id. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt corrupti autem consequatur illo sapiente dolorem repellat ea, explicabo fuga ut nobis expedita dignissimos deleniti. Tempore laudantium omnis illum cum vero?",
     price: 30 * itemquantity,
     image:
-      "https://isto.pt/cdn/shop/files/Heavyweight_Black_ef459afb-ff7a-4f9a-b278-9e9621335444.webp?v=1710414950", // Replace with actual image URL
+      "https://isto.pt/cdn/shop/files/Heavyweight_Black_ef459afb-ff7a-4f9a-b278-9e9621335444.webp?v=1710414950",
     sizes: ["S", "M", "L", "XL"],
     quantity: itemquantity,
   };
@@ -48,7 +48,6 @@ function Overview({ addToCart }) {
           {product.price} $
         </h2>
 
-        {/* <h2 className="mt-5 text-xl font-bold">Choose your size:</h2> */}
         <div className="flex gap-4">
           <div className="flex gap-2 text-2xl mt-5">
             {product.sizes.map((size) => (
