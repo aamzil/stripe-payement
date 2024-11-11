@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(cors());
 
 app.post("/create-checkout-session", async (req, res) => {
-  const { cart } = req.body;
+  const { cart } = req.body; // Now expect domain URL from the client
 
   const line_items = cart.map((item) => ({
     price_data: {
@@ -31,16 +31,16 @@ app.post("/create-checkout-session", async (req, res) => {
       payment_method_types: ["card"],
       line_items,
       mode: "payment",
-      success_url: "http://stripepayement.vercel.app/success", // Your success URL
-      cancel_url: "http://stripepayement.vercel.app/cancel", // Your cancel URL
+      success_url: `http://localhost:5174/success`, // Use the dynamic URL from the client
+      cancel_url: `http://localhost:5174/cancel`, // Use the dynamic URL from the client
     });
 
-    res.json({ id: session.id });
+    res.json({ url: session.url });
   } catch (error) {
     console.error("Error creating checkout session:", error);
     res.status(500).send("Internal Server Error");
   }
 });
 
-const PORT = 4242;
+const PORT = process.env.PORT || 4040;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

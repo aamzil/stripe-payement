@@ -11,7 +11,7 @@ function Cart({ cart, setCart }) {
 
     try {
       const response = await fetch(
-        "http://localhost:4242/create-checkout-session",
+        "http://localhost:4040/create-checkout-session",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -23,13 +23,13 @@ function Cart({ cart, setCart }) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      const session = await response.json();
-      const stripe = await stripePromise;
+      // const session = await response.json();
+      // const stripe = await stripePromise;
 
-      // Redirect to checkout
-      const { error } = await stripe.redirectToCheckout({
-        sessionId: session.id,
-      });
+      const data = await response.json();
+
+      // Redirect to the Stripe checkout URL
+      window.location.href = data.url;
 
       if (error) {
         console.error("Stripe checkout error:", error.message);
